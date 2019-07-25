@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Start game</title>
+    <link rel="icon" href="./SBfavicon.ico" type="image/ico" sizes="100x100">
+    <link rel="stylesheet" href="assets/normalize.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+</body>
+<div class="container">
+    <div id="start_game">
+        <div id="logo">
+            <img src="./assets/images/logo.svg" alt="" onclick="quitGame()">
+        </div>
+        <div id="statistics">
+            <div class="wrapper">
+                <img id="bg-time" src="./assets/images/bg-time.png" alt="">
+                <span id="time"></span>
+                <div id="count">
+                    <span>0</span>/10
+                </div>
+            </div>
+        </div>
+        <div id="game">
+            <div class="wrapper">
+                <img src="./assets/images/line_art_1.png" alt="" class="bg-game" usemap="#game-map">
+                <map name="game-map">
+                    <area target="" alt="bottle-1" title="bottle-1" onclick="bingo(1)" coords="397, 534, 431, 658"
+                          shape="rect">
+                    <area target="" alt="bottle-2" title="bottle-2" onclick="bingo(2)" coords="716, 212, 750, 336"
+                          shape="rect">
+                    <area target="" alt="bottle-3" title="bottle-3" onclick="bingo(3)" coords="1702, 407, 1736, 531"
+                          shape="rect">
+                    <area target="" alt="bottle-4" title="bottle-4" onclick="bingo(4)" coords="2077, 487, 2111, 611"
+                          shape="rect">
+                    <area target="" alt="bottle-5" title="bottle-4" onclick="bingo(5)" coords="2827, 343, 2861, 467"
+                          shape="rect">
+                    <area target="" alt="bottle-6" title="bottle-6" onclick="bingo(6)" coords="3916, 410, 3950, 534"
+                          shape="rect">
+                    <area target="" alt="bottle-7" title="bottle-7" onclick="bingo(7)" coords="4521, 412, 4555, 536"
+                          shape="rect">
+                    <area target="" alt="bottle-8" title="bottle-8" onclick="bingo(8)" coords="5064, 619, 5098, 743"
+                          shape="rect">
+                    <area target="" alt="bottle-9" title="bottle-9" onclick="bingo(9)" coords="5439, 279, 5473, 403"
+                          shape="rect">
+                    <area target="" alt="bottle-10" title="bottle-10" onclick="bingo(10)" coords="6330, 414, 6364, 538"
+                          shape="rect">
+                </map>
+                <div id="result">
+                    <div id="bottle_1">
+                        <img src="./assets/images/bottle-bg-1.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-1.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_2">
+                        <img src="./assets/images/bottle-bg-2.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-2.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_3">
+                        <img src="./assets/images/bottle-bg-3.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-3.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_4">
+                        <img src="./assets/images/bottle-bg-4.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-4.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_5">
+                        <img src="./assets/images/bottle-bg-5.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-5.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_6">
+                        <img src="./assets/images/bottle-bg-6.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-6.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_7">
+                        <img src="./assets/images/bottle-bg-7.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-7.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_8">
+                        <img src="./assets/images/bottle-bg-8.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-8.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_9">
+                        <img src="./assets/images/bottle-bg-9.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-9.png" alt="" class="leaf">
+                    </div>
+                    <div id="bottle_10">
+                        <img src="./assets/images/bottle-bg-10.png" alt="" class="bg">
+                        <img src="./assets/images/bottle-product.png" alt="" class="p">
+                        <img src="./assets/images/leaf-10.png" alt="" class="leaf">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="info">
+            <img src="./assets/images/info.png" usemap="#info-map">
+            <map name="info-map">
+                <area target="" alt="info" title="info" onclick="openGuide('pause')" coords="32,32,25" shape="circle">
+                <area target="" alt="gift" title="gift" onclick="openPrizes('pause')" coords="87,32,25" shape="circle">
+            </map>
+        </div>
+    </div>
+    <div id="guide">
+        <span onclick="continueGame()" id="continue-game">
+            X
+        </span>
+        <div class="wrapper">
+            <div class="how_to_play">
+                <span class="text_1">
+                    HOW TO PLAY
+                </span>
+                <img class="guide-step" src="./assets/images/guide-step.png" alt="">
+                <img onclick="openPrizes()" class="btn-continue" src="./assets/images/continue.png" alt="">
+            </div>
+            <div class="prizes">
+                <span class="text_1">
+                    WHAT CAN YOU WIN
+                </span>
+                <img src="./assets/images/prizes.png" alt="Prizes" class="detail">
+                <img src="./assets/images/start.png" alt="Start game" onclick="startGame()" class="btn-start">
+            </div>
+        </div>
+    </div>
+
+    <div id="timeout">
+        <div class="wrapper">
+            <div class="result">
+                <p class="text_1">
+                    Well done! You spotted
+                </p>
+                <p class="text_2">
+                    0
+                </p>
+                <p class="text_3">
+                    <span>Strongbow Apple</span>
+                    <br>
+                    <span>Ciders bottles.</span>
+                </p>
+                <hr width="400px">
+                <p class="text_4">
+                    Present this at the counter to redeem
+                    your prize or click below to play again.
+                </p>
+                <div class="btn_home">
+                    <a href="./index.html">
+                        <img src="./assets/images/home.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm">
+        <div class="wrapper">
+            <div class="quitGame">
+                <p>Are you sure you want to quit the game?</p>
+                <div class="btn-group">
+                    <a href="./index.html">
+                        <p class="yes">
+                            YES
+                        </p>
+                    </a>
+                    <p class="no">
+                        NO
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./assets/jquery.min.js"></script>
+<script>
+    var countContext = document.querySelector("#count span");
+    var bottleChecked = [];
+    var countdown = null;
+    var time = 60;
+    var pausedTime = 0;
+    var display = document.querySelector("#time");
+    var statistics = document.getElementById("statistics");
+    var confirm = $("#confirm");
+    var resultPage = {
+        success: {
+            "text_1": "Well done! You spotted",
+            "text_4": "Speak to one our brand ambassadors to collect your prize!"
+        },
+        unsuccess: {
+            "text_1": "You spotted",
+            "text_4": "Want another go? Speak to one of our brand ambassadors."
+        }
+    }
+
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        countdown = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+            pausedTime = timer;
+            if (--timer < 0) {
+                clearInterval(countdown);
+                checkResult();
+            }
+        }, 1000);
+    }
+
+    function setCount(number) {
+        countContext.textContent = number || 0;
+    }
+
+    function bingo(bottleNumber) {
+        var rs = bottleChecked.findIndex(function (b) {
+            return bottleNumber === b;
+        })
+        if (rs < 0) {
+            var el = "#bottle_" + bottleNumber;
+            document.querySelector(el + " .p").style.display = "block";
+            document.querySelector(el + " .bg").classList.add("unhide_"+bottleNumber)
+            document.querySelector(el + " .leaf").classList.add("unLeaf")
+            bottleChecked.push(bottleNumber);
+            setCount(bottleChecked.length);
+        }
+        if (bottleChecked.length === 10) {
+            checkResult();
+        }
+    }
+
+    function checkResult() {
+        setTimeout(function () {
+            localStorage.setItem("StrongBowPoint", bottleChecked.length);
+            statistics.style.display = "none";
+            document.getElementById("timeout").style.display = "block";
+            document.querySelector("#timeout .wrapper .result .text_2").textContent = bottleChecked.length;
+            if (bottleChecked.length < 5) {
+                Object.keys(resultPage.unsuccess).map(function (key) {
+                    document.querySelector("#timeout .wrapper .result ." + key).textContent = resultPage.unsuccess[key];
+                })
+            } else {
+                Object.keys(resultPage.success).map(function (key, value) {
+                    document.querySelector("#timeout .wrapper .result ." + key).textContent = resultPage.success[key];
+                })
+            }
+
+            // Jira STRON-20 Remove 's' from 'bottles' for only 1 bottle found
+            if (bottleChecked.length === 1) {
+                document.querySelectorAll("#timeout .wrapper .result .text_3 span")[1].textContent = "Ciders bottle.";
+            } else {
+                document.querySelectorAll("#timeout .wrapper .result .text_3 span")[1].textContent = "Ciders bottles.";
+            }
+        }, 1000);
+    }
+
+    function hideResult() {
+        document.getElementById("timeout").style.display = "none";
+    }
+
+    function stopGame() {
+        bottleChecked = [];
+        setCount(0);
+        var i = 1;
+        for (i; i <= 10; i++) {
+        var el = "#bottle_" + 1;
+        document.querySelector(el + " .p").style.display = "none";
+        document.querySelector(el + " .bg").classList.remove("unhide_" + i);
+        document.querySelector(el + " .leaf").classList.remove("unLeaf")
+        }
+        clearInterval(countdown);
+        statistics.style.display = "none";
+    }
+
+    function startGame() {
+        stopGame();
+        hideResult();
+        statistics.style.display = "block";
+        document.getElementById("guide").style.display = "none";
+        document.getElementById("game").scrollLeft = (6886 - 1920) / 2;
+        startTimer(time, display);
+        document.querySelector("#game #result").style.display = "block";
+    }
+
+    function pauseGame() {
+        document.querySelector("#guide .wrapper .btn-continue").style.display = "none";
+        document.querySelector("#guide .wrapper .btn-start").style.display = "none";
+        document.getElementById("continue-game").style.display = "block";
+        clearInterval(countdown);
+    }
+
+    function continueGame() {
+        startTimer(pausedTime - 1, display);
+        pausedTime = 0;
+        document.getElementById("guide").style.display = "none";
+        document.querySelector("#guide .wrapper .btn-continue").style.display = "none";
+        document.querySelector("#guide .wrapper .btn-start").style.display = "none";
+        document.getElementById("continue-game").style.display = "none";
+    }
+
+    function quitGame() {
+        pauseGame();
+        confirm.css({display: "block"})
+        $("#confirm").unbind("click").bind("click").on("click", ".no", function () {
+            confirm.css({display: "none"});
+            continueGame();
+        })
+    }
+
+    function openGuide(status) {
+        if (status === "pause") {
+            pauseGame();
+        } else {
+            stopGame();
+        }
+        document.getElementById("guide").style.display = "block";
+        document.querySelector("#guide .how_to_play").style.display = "block";
+        document.querySelector("#guide .prizes").style.display = "none";
+    }
+
+    function openPrizes(status) {
+        if (status === "pause") {
+            pauseGame();
+        } else {
+            stopGame();
+        }
+        document.getElementById("guide").style.display = "block";
+        document.querySelector("#guide .prizes").style.display = "block";
+        document.querySelector("#guide .how_to_play").style.display = "none";
+    }
+
+
+    //load
+    document.getElementById("game").scrollLeft = (6886 - 1920) / 2;
+    openGuide();
+
+    var $container = $(".container");
+
+    $(window).resize(function () {
+        fillDiv($container, true)
+    });
+
+    $(document).ready(function () {
+        fillDiv($container, true)
+    });
+
+    function fillDiv(div, proportional) {
+        var win = $(window);
+        var currentWidth = div.outerWidth();
+        var currentHeight = div.outerHeight();
+
+        var availableHeight = win.height();
+        var availableWidth = win.width();
+
+        var scaleX = availableWidth / currentWidth;
+        var scaleY = availableHeight / currentHeight;
+
+        if (proportional) {
+            scaleX = Math.min(scaleX, scaleY);
+            scaleY = scaleX;
+        }
+
+        var translationX = Math.round((availableWidth - (currentWidth * scaleX)) / 2);
+        var translationY = Math.round((availableHeight - (currentHeight * scaleY)) / 2);
+
+        div.css({
+            "position": "fixed",
+            "left": "0px",
+            "top": "0px",
+            "-webkit-transform": "translate(" + translationX + "px, "
+                + translationY + "px) scale3d("
+                + scaleX + ", " + scaleY + ", 1)",
+            "-webkit-transform-origin": "0 0"
+        });
+    }
+
+</script>
+
+</html>

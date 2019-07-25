@@ -1,0 +1,505 @@
+@font-face {
+  font-family: AvenirNext;
+  src: url('./fonts/AvenirNextLTPro-Regular.otf');
+}
+
+@font-face {
+  font-family: AvenirNextBold;
+  src: url('./fonts/AvenirNextLTPro-Bold.otf');
+  font-weight: bold;
+}
+
+// ::-webkit-scrollbar{
+//     display: none;
+// }
+
+//Variable
+
+
+//Bottle_1
+//@include commonBottle(0px, 397px, 534px, 397px, 534px, 83px, 93px);
+$bottle_1: ("left": 0px, "product_x" : 397px, "product_y" : 534px, "bg_x" : 397px, "bg_y" : 534px, "leaf_x": 83px, "leaf_y" : 93px);
+
+//Bottle_2
+//@include commonBottle(0px, 716px, 212px, 716px, 212px, 456px, 17px);
+$bottle_2: ("left": 0px, "product_x" : 716px, "product_y" : 212px, "bg_x" : 716px, "bg_y" : 212px, "leaf_x": 456px, "leaf_y" : 17px);
+
+//Bottle_3
+//@include commonBottle(909px, 1702px, 407px, 793px, 407px, 1343px, 51px);
+$bottle_3: ("left": 909px, "product_x" : 1702px, "product_y" : 407px, "bg_x" : 793px, "bg_y" : 407px, "leaf_x": 1343px, "leaf_y" : 51px);
+
+//Bottle_4
+//@include commonBottle(909px, 2077px, 487px, 1168px, 487px, 1954px, 396px);
+$bottle_4: ("left": 909px, "product_x" : 2077px, "product_y" : 487px, "bg_x" : 1168px, "bg_y" : 487px, "leaf_x": 1954px, "leaf_y" : 396px);
+
+//Bottle_5
+//@include commonBottle(2136px, 2827px, 343px, 691px, 343px, 2708px, 132px);
+$bottle_5: ("left": 2136px, "product_x" : 2827px, "product_y" : 343px, "bg_x" : 691px, "bg_y" : 343px, "leaf_x": 2708px, "leaf_y" : 132px);
+
+//Bottle_6
+//@include commonBottle(2136px, 3916px, 410px, 1780px, 410px, 2980px, 49px);
+$bottle_6: ("left": 2136px, "product_x" : 3916px, "product_y" : 410px, "bg_x" : 1780px, "bg_y" : 410px, "leaf_x": 2980px, "leaf_y" : 49px);
+
+//Bottle_7
+//@include commonBottle(4038px, 4521px, 412px, 483px, 412px, 4401px, 172px);
+$bottle_7: ("left": 4038px, "product_x" : 4521px, "product_y" : 412px, "bg_x" : 483px, "bg_y" : 412px, "leaf_x": 4401px, "leaf_y" : 172px);
+
+//Bottle_8
+//@include commonBottle(4038px, 5064px, 619px, 1026px, 619px, 4883px, 249px);
+$bottle_8: ("left": 4038px, "product_x" : 5064px, "product_y" : 619px, "bg_x" : 1026px, "bg_y" : 619px, "leaf_x": 4883px, "leaf_y" : 249px);
+
+//Bottle_9
+//@include commonBottle(5103px, 5439px, 279px, 336px, 279px, 5393px, 349px);
+$bottle_9: ("left": 5103px, "product_x" : 5439px, "product_y" : 279px, "bg_x" : 336px, "bg_y" : 279px, "leaf_x": 5393px, "leaf_y" : 349px);
+
+//Bottle_10
+//@include commonBottle(5103px, 6330px, 414px, 1227px, 414px, 5906px, 175px);
+$bottle_10: ("left": 5103px, "product_x" : 6330px, "product_y" : 414px, "bg_x" : 1227px, "bg_y" : 414px, "leaf_x": 5906px, "leaf_y" : 175px);
+
+body {
+  font-family: AvenirNext;
+  color: #5E450E;
+}
+
+.container {
+  position: relative;
+  margin: auto;
+  width: 1920px;
+  height: 1080px;
+
+  #start_game {
+    z-index: 1;
+    width: 1920px;
+    height: 1080px;
+    display: block;
+
+    #logo {
+      top: 25px;
+      left: 823px;
+      position: absolute;
+      z-index: 20;
+    }
+
+    #statistics {
+      display: none;
+      z-index: 20;
+      position: absolute;
+      top: 76px;
+      left: 1489px;
+
+      .wrapper {
+        position: relative;
+        width: 431px;
+        height: 97px;
+
+        #time {
+          position: absolute;
+          top: 15px;
+          left: 50px;
+          font-size: 70.89px;
+        }
+
+        #count {
+          position: absolute;
+          font-size: 34.5px;
+          top: 35px;
+          right: 70px;
+        }
+      }
+    }
+
+    #game {
+      z-index: 10;
+      position: fixed;
+      top: 104px;
+      width: 1920px;
+      height: 862px;
+      overflow: auto;
+      overflow-y: hidden;
+
+      .wrapper {
+        width: 6776px;
+        height: 847px;
+        position: relative;
+        background: #fff7e4;
+
+        .bg-game {
+          position: absolute;
+          z-index: 16;
+        }
+
+        #result {
+          display: none;
+
+          img {
+            position: absolute;
+          }
+
+          @mixin commonBottle($coor, $x, $y,$color_x, $color_y, $leaf_x, $leaf_y) {
+            .bg {
+              left: $coor;
+              $x1: $color_x + 15px;
+              $y1: $color_y + 61px;
+              //-webkit-clip-path: circle(10px at $x1 $y1);
+              //clip-path: circle(10px at $x1 $y1);
+              -webkit-mask-image: radial-gradient(ellipse 0px 50px at $x1 $y1, #000 34%, transparent);
+              transform:translateZ(0);
+              transform-style: preserve-3d;
+              backface-visibility: hidden;
+            }
+            .p {
+              top: $y;
+              left: $x;
+              z-index: 17;
+              display: none;
+            }
+            .leaf {
+              position: absolute;
+              left: $leaf_x;
+              top: $leaf_y;
+              z-index: 18;
+              pointer-events: none;
+              opacity: 0;
+            }
+          }
+
+          #bottle_1 {
+            $bottle__: $bottle_1;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_2 {
+            $bottle__: $bottle_2;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_3 {
+            $bottle__: $bottle_3;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_4 {
+            $bottle__: $bottle_4;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_5 {
+            $bottle__: $bottle_5;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_6 {
+            $bottle__: $bottle_6;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_7 {
+            $bottle__: $bottle_7;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_8 {
+            $bottle__: $bottle_8;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_9 {
+            $bottle__: $bottle_9;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          #bottle_10 {
+            $bottle__: $bottle_10;
+            @include commonBottle(map_get($bottle__, "left"), map_get($bottle__, "product_x"), map_get($bottle__, "product_y"), map_get($bottle__, "bg_x"), map_get($bottle__, "bg_y"), map_get($bottle__, "leaf_x"), map_get($bottle__, "leaf_y"));
+          }
+
+          .unhide {
+            animation: fillColor;
+            animation-fill-mode: forwards;
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+          }
+
+          @for $i from 1 to 11 {
+            .unhide_#{$i} {
+              animation: fillColorBottle#{$i};
+              animation-fill-mode: forwards;
+              animation-duration: 4s;
+              animation-timing-function: ease-in-out;
+            }
+          }
+
+          .unLeaf {
+            animation: fillLeaf;
+            animation-fill-mode: forwards;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+          }
+        }
+      }
+    }
+
+    #info {
+      position: absolute;
+      top: 991px;
+      left: 31px;
+      width: 114px;
+      height: 64px;
+    }
+  }
+
+  #guide {
+    z-index: 3;
+    display: none;
+
+    #continue-game {
+      font-size: 50px;
+      position: absolute;
+      top: 30px;
+      z-index: 70;
+      right: 30px;
+      color: #FFF;
+      display: none;
+      cursor: pointer;
+    }
+
+    .wrapper {
+      color: #FFF;
+      position: fixed;
+      top: 0;
+      background: rgba(199, 149, 23, .85);
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 1080px;
+      width: 1920px;
+
+      .text_1 {
+        font-family: AvenirNextBold;
+        font-size: 50px;
+        height: 68px;
+        letter-spacing: 3px;
+      }
+
+      .how_to_play {
+        display: none;
+        height: 579px;
+        width: 1443px;
+        text-align: center;
+
+        .guide-step {
+          margin-top: 30px;
+        }
+
+        .btn-continue {
+          margin-top: 40px;
+        }
+      }
+
+      .prizes {
+        display: none;
+        height: 579px;
+        width: 1041px;
+        text-align: center;
+
+        .detail {
+          margin-top: 50px;
+        }
+
+        .btn-start {
+          margin-top: 105px;
+        }
+      }
+    }
+  }
+
+  #timeout {
+    z-index: 2;
+    display: none;
+
+    .wrapper {
+      color: #FFF;
+      height: 1080px;
+      width: 1920px;
+      position: absolute;
+      top: 0;
+      background: rgba(0, 0, 0, .7);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .result {
+        background: rgba($color: #C79517, $alpha: .7);
+        height: 700px;
+        width: 716px;
+
+        .text_1 {
+          text-align: center;
+          font-family: AvenirNextBold;
+          font-size: 40px;
+          margin: 1em 0 0 0;
+          height: 55px;
+        }
+
+        .text_2 {
+          font-size: 200px;
+          font-family: AvenirNextBold;
+          text-align: center;
+          margin: 0;
+        }
+
+        .text_3 {
+          font-family: AvenirNextBold;
+          font-size: 40px;
+          margin: 0;
+          text-align: center;
+          margin-top: -15px;
+          height: 103px;
+          margin-bottom: 20px;
+        }
+
+        .text_4 {
+          width: 530px;
+          font-family: AvenirNext;
+          font-size: 30px;
+          text-align: center;
+          margin: 30px auto;
+          height: 77px;
+        }
+
+        .btn_home {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  #confirm {
+    display: none;
+
+    .wrapper {
+      color: #FFF;
+      height: 1080px;
+      width: 1920px;
+      position: absolute;
+      top: 0;
+      background: rgba(0, 0, 0, .7);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .quitGame {
+        height: 300px;
+        width: 700px;
+        background: rgba(199, 149, 23, .75);
+
+        a {
+          text-decoration: none;
+          color: #FFF;
+        }
+
+        p {
+          width: 465px;
+          height: 103px;
+          font-size: 40px;
+          text-align: center;
+          font-family: AvenirNextBold;
+        }
+
+        > p {
+          margin: 50px auto 25px;
+        }
+
+        .btn-group {
+          width: 360px;
+          height: 71.5px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .yes {
+            width: 170px;
+            height: 71.5px;
+            background: rgba(0, 0, 0, .75);
+            line-height: 81.5px;
+            display: block;
+            cursor: pointer;
+          }
+
+          .no {
+            width: 170px;
+            height: 71.5px;
+            outline: 1px #FFF solid;
+            outline-offset: -1px;
+            line-height: 81.5px;
+            display: block;
+            margin-left: 25px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@mixin percentFillColor($bottle) {
+  $x: 0;
+  $y: 0;
+  @if $bottle == 1 {
+    $x: map_get($bottle_1, "bg_x");
+    $y: map_get($bottle_1, "bg_y");
+  } @else if $bottle == 2 {
+    $x: map_get($bottle_2, "bg_x");
+    $y: map_get($bottle_2, "bg_y");
+  } @else if $bottle == 3 {
+    $x: map_get($bottle_3, "bg_x");
+    $y: map_get($bottle_3, "bg_y");
+  } @else if $bottle == 4 {
+    $x: map_get($bottle_4, "bg_x");
+    $y: map_get($bottle_4, "bg_y");
+  } @else if $bottle == 5 {
+    $x: map_get($bottle_5, "bg_x");
+    $y: map_get($bottle_5, "bg_y");
+  } @else if $bottle == 6 {
+    $x: map_get($bottle_6, "bg_x");
+    $y: map_get($bottle_6, "bg_y");
+  } @else if $bottle == 7 {
+    $x: map_get($bottle_7, "bg_x");
+    $y: map_get($bottle_7, "bg_y");
+  } @else if $bottle == 8 {
+    $x: map_get($bottle_8, "bg_x");
+    $y: map_get($bottle_8, "bg_y");
+  } @else if $bottle == 9 {
+    $x: map_get($bottle_9, "bg_x");
+    $y: map_get($bottle_9, "bg_y");
+  } @else if $bottle == 10 {
+    $x: map_get($bottle_10, "bg_x");
+    $y: map_get($bottle_10, "bg_y");
+  }
+
+  @for $i1 from 1 to 101 {
+    #{$i1 * 1%} {
+      transform:translateZ(0);
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-mask-image: radial-gradient(ellipse #{$i1 * 1%} #{($i1 * 3) * 1%} at $x $y, #000 34%, transparent 50%);
+    }
+  }
+}
+
+@for $i from 1 to 11 {
+  @keyframes fillColorBottle#{$i} {
+    @include percentFillColor($i)
+  }
+}
+
+@keyframes fillLeaf {
+  100% {
+    opacity: 1;
+  }
+}

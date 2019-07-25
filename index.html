@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Landing</title>
+    <link rel="icon" href="./SBfavicon.ico" type="image/ico" sizes="100x100">
+    <link rel="stylesheet" href="assets/normalize.css">
+    <style>
+        body{
+            background: rgba(0,0,0,.5);
+        }
+        .container {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="./assets/images/Landing.png" usemap="#image-map">
+        <map name="image-map">
+            <area href="./start-game.html" coords="870,666,1199,736" shape="rect">
+        </map>
+    </div>
+    <script src="./assets/jquery.min.js"></script>
+    <script>
+        var $container = $(".container")
+        $(window).resize(function () {
+            fillDiv($container, true)
+        });
+
+        $(document).ready(function () {
+            fillDiv($container, true)
+        })
+
+        function fillDiv(div, proportional) {
+            var win = $(window);
+            var currentWidth = div.outerWidth();
+            var currentHeight = div.outerHeight();
+
+            var availableHeight = win.height();
+            var availableWidth = win.width();
+
+            var scaleX = availableWidth / currentWidth;
+            var scaleY = availableHeight / currentHeight;
+
+            if (proportional) {
+                scaleX = Math.min(scaleX, scaleY);
+                scaleY = scaleX;
+            }
+
+            var translationX = Math.round((availableWidth - (currentWidth * scaleX)) / 2);
+            var translationY = Math.round((availableHeight - (currentHeight * scaleY)) / 2);
+
+            div.css({
+                "position": "fixed",
+                "left": "0px",
+                "top": "0px",
+                "-webkit-transform": "translate(" + translationX + "px, "
+                    + translationY + "px) scale3d("
+                    + scaleX + ", " + scaleY + ", 1)",
+                "-webkit-transform-origin": "0 0"
+            });
+        }
+    </script>
+</body>
+
+</html>
